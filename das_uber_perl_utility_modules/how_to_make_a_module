@@ -1,0 +1,45 @@
+*README/EXAMPLE
+*HOW TO CREATE A MODULE
+
+*Basicly, all this is is a list of prompts for the user and if you so desire error checking. 
+*We then take the input and pass it to a program. Thats it. 
+*You should not need to touch the main file, there are a few things you can change, but not much
+
+
+*Start off with a comment for what this does and a variable with the path to the program you want to run:
+  #interactive prompter for snmp_rename_port
+  my $prog_name = "/root/jeremy_utils/snmp_rename_port.pl";
+  use strict;
+
+
+*Then create a function, the name must be the EXACT same as the file name (case included), minus .pl.
+* Also use the my line to import the default community, prog name, etc.
+  sub SNMP_Rename_Port {
+	my ($default_comm, $name_of_prog, $clear_string) = @_;
+ 
+ 
+*I suggest keeping the following lines to reset the terminal and greet the user in a friendly way
+        #clear the terminal window
+        print $clear_string;
+
+        #give a welcome message
+        print color 'bold';
+        print "\n\nWelcome to $name_of_prog  \n";
+        print color 'reset';
+
+
+*Then you can ask the user for some input and do something with it:
+        print "\nWhat is the hostname or ip of device you want to make your change on? ";
+        my $req_hname = <>;
+        chomp ($req_hname);
+
+
+*Now you can execute the program, feel free to use the default snmp community, debug flags, etc:
+        #run the correct program:
+        system ("$prog_name -H $req_hname -w $default_comm -d");
+
+
+*Then close the function. You must keep the last line of this file or perl will not use it!
+}
+#the next line is required for perl to import the file
+1;

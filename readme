@@ -1,0 +1,18 @@
+Das Über Perl Utility
+
+This was created to run tools that would normally be run by system processes or jobs by hand, and give them some sort of interactive mode. 
+
+The thought is this:
+das_uber_perl_utility.pl is the main script and includes some global variables, etc. It looks in a modules directory for modules or wrappers that end in .pl.
+It asks the user which one to run, includes the one they picked, and runs the function inside that file with the same name as the file minus .pl .
+
+There are three example modules that run other perl scripts in some of my other repos. 
+Check if ip free and snmp rename port could be used by almost anyone. change vlan pulls from a asset db (modified version of rackmonkey) and is less useful to others but might be a good example to help others.
+
+
+
+The main program uses:
+Term::ANSIColor;
+Term::Cap;
+
+The modules have their own requirements. Please check them to see what they import. 
