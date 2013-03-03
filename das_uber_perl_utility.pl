@@ -1,6 +1,4 @@
 #!/usr/bin/env perl
-#This is used to interface with other programs that are not meant to be interactivly run.
-# - JFalling 2012
 
 #****************************************************************************
 #*   Das Über Perl Utility                                                  *
